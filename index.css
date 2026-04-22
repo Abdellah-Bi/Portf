@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: 0;
+    background-color: #050505;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .grid-bg {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glass {
+    background: rgba(12, 12, 12, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glow-blue:hover {
+    box-shadow: 0 0 30px rgba(1, 112, 251, 0.25);
+    border-color: rgba(1, 112, 251, 0.5);
+  }
+
+  .glow-green:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+    border-color: rgba(0, 255, 65, 0.4);
+  }
+}
+
+@layer utilities {
+  .radar-wave {
+    animation: radar-pulse 3s infinite ease-out;
+  }
+
+  .scanline {
+    width: 100%;
+    height: 2px;
+    z-index: 100;
+    background: linear-gradient(90deg, transparent, #0170fb, transparent);
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    animation: scanline 10s linear infinite;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+
+  .animate-reverse-spin {
+    animation: reverse-spin 8s linear infinite;
+  }
+
+  .markdown-body {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .markdown-body p { margin-bottom: 0.5rem; }
+  .markdown-body ul, .markdown-body ol { margin-bottom: 0.5rem; padding-left: 1.25rem; }
+  .markdown-body li { margin-bottom: 0.25rem; }
+  .markdown-body code { background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.3rem; border-radius: 3px; }
+  .markdown-body pre { background: rgba(0, 0, 0, 0.3); padding: 0.5rem; border-radius: 5px; overflow-x: auto; margin-bottom: 0.5rem; }
+}
+
+@keyframes radar-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reverse-spin {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e1e;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}
