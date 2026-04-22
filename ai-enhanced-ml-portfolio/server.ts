@@ -24,7 +24,7 @@ async function startServer() {
   );
 
   // API routes
-  app.get("/api/auth/google/url", (req, res) => {
+  app.get("/api/auth/google/url", (req: express.Request, res: express.Response) => {
     if (!clientID || !clientSecret) {
       return res.status(500).json({ error: "Google OAuth credentials not configured" });
     }
@@ -38,7 +38,7 @@ async function startServer() {
     res.json({ url });
   });
 
-  app.get(["/auth/google/callback", "/auth/google/callback/"], async (req, res) => {
+  app.get(["/auth/google/callback", "/auth/google/callback/"], async (req: express.Request, res: express.Response) => {
     const { code } = req.query;
 
     if (!code) {
@@ -74,7 +74,7 @@ async function startServer() {
     }
   });
 
-  app.get("/api/health", (req, res) => {
+  app.get("/api/health", (req: express.Request, res: express.Response) => {
     res.json({ status: "ok", drive_access: !!clientID });
   });
 
@@ -87,7 +87,7 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     app.use(express.static("dist"));
-    app.get("*", (req, res) => {
+    app.get("*", (req: express.Request, res: express.Response) => {
       res.sendFile("dist/index.html", { root: "." });
     });
   }
