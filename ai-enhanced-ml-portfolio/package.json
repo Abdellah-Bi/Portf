@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "tsc --noEmit",
     "preview": "vite preview",
-    "start": "node server.ts"
+    "serve": "node server.ts"
   },
   "dependencies": {
     "@google/genai": "latest",
